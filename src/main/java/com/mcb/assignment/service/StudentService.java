@@ -55,8 +55,8 @@ public class StudentService {
         List<String> courses= new ArrayList<String>();
         try {
             Student student = studentRepository.findById(studentId).get();
-            Set<Course> cids= student.getCourses();
-            courses= cids.stream().map(x-> x.getName()).collect(Collectors.toList());
+            Set<Course> courseSet= student.getCourses();
+            courses= courseSet.stream().map(x-> x.getName()).collect(Collectors.toList());
         }
         catch(Exception ex) {
             log.error("Error while retrieveStudentsForInstructor : {} , {}", ex.getMessage(), ex);
